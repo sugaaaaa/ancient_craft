@@ -4,12 +4,10 @@
 
 @section('content')
 
-    <body>
+    <div class="catecgory">
         <br>
-         {{-- call data catecgory --}}
                 <td scope="row">
                     <ul  class="list-style-position"; style=“display:flex”;> 
-                       
                         @if($catecgories->count() > 0)
                         @foreach($catecgories as $item)
                         <li>
@@ -21,62 +19,77 @@
                                 <td class="text-center" colspan="5">Product not found</td>
         
                             </tr>
-        
                         @endif
                         </ul>
                 </td>
-         {{-- ending call --}}
+        <br>
+        <br>
+    </div>
 
-        <br>
-        <br>
         <!-- slide-->
-        <div>
+        <div slider>
             <img
           className="d-block w-100"
           src="https://ik.imgkit.net/3vlqs5axxjf/TW-Asia/uploadedImages/Industry/Destinations/statues-at-angkor-wat.jpg?tr=w-1200%2Cfo-auto"
           style="height:300" width="100%"/>
         </div>
+
         <br>
         <br>
         <h1 class="text-center">សិប្បកម្មបុរាណសូមស្វាគមន៍</h1>
+       
 
-        {{-- calling data post --}}
-        <div class="container ">
-            <div class="row">
-
+        
+        <div class="card-container">
             @if ($postcrud->count() > 0)
-                @foreach ($postcrud as $item)
-                        <div class="col-4 mt-2 ">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="card-img-actions" >
-                                        <img src="{{ asset('images/' . $item->image) }}"class="card-img img-fluid"
-                                            width="96" height="350" alt="">
-                                    </div>
-                                </div>
-                                <div class="card-body bg-light text-center">
-                                    <div class="mb-2">
-                                        <h6 class="font-weight-semibold mb-2">
-                                            <h1>{{ $item->title }}</h1>
-                                        </h6>
-                                        <p>{{ $item->content }}</p>
-                                        <a href="{{ url('home/' . $item->id) }}" title="View Item"><button
-                                                class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"
-                                                    aria-hidden="true"></i>ViewItem</button></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    
-                @endforeach
-            @else
+            @foreach ($postcrud as $item)
+            <div class="card">
+                <img src="{{ asset('images/' . $item->image) }}" alt="" class="src">
+                <div class="card-content">
+                    <h3>{{ $item->title }}</h3>
+                    <p>{{ $item->content }}</p>
+                    <a href="{{ url('home/' . $item->id) }}" class="btn">Read More</a>
+                </div>
+            </div>
+            @endforeach
+        @else
         </div>
-        </div>
-        {{-- end call data post --}}
+        
+        
         <tr>
             <td class="text-center" colspan="5">Item not found</td>
         </tr>
         @endif
     </body>
-
+    
+    <!-- *************************************footer******************************************* -->
+    <footer>
+        <div class="foo_top">
+            <div class="foo_menue">
+                <ul>
+                    <a href="#"><li>Home</li></a>
+                    <a href="#"><li>Services</li></a>
+                    <a href="#"><li>Contace Us</li></a>
+                    <a href="#"><li>Helps</li></a>
+                </ul>
+            </div>
+            <div class="foo_contact">
+                <div class="foo foo_contact_left">
+                    <h3>Address</h3>
+                    <p>Royal University of phnom penh</p>
+                    <p><b>Location: Phnom Penh</b></p>
+                </div>
+                <div class="foo foo_contact_right">
+                    <h3>Phone Number</h3>
+                    <p>Tail: 069680104</p>
+                    <p>Tail: 069680104</p>
+                </div>
+                <div class="foo foo_contact_center">
+                    <h3>Follow Us</h3>
+                    <p class="fab fa-facebook"><a href="#">Facebook</a></p>
+                    <p class="fab fa-instagram"><a href="#">Instragram</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
 @endsection
